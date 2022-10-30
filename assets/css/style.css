@@ -1,5 +1,5 @@
 :root{
-  --dark:#101935;
+  --dark:rgb(16, 25, 53);
   --mint: #9AD4D6;
   --grape: #564787;
 }
@@ -9,13 +9,14 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 7px 2%;
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px auto auto 50px;
+  max-width: 2000px;
 }
 
 h1,
@@ -125,29 +126,127 @@ main{
 
 .page-wrapper{
   display: grid;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-rows: auto 2fr auto;
 }
 
-#about{
+.page-wrapper h2{
+  color: var(--grape);
+  align-self: flex-start;
+  font-size: 1.7rem;
+}
+
+
+#about, #work, #contact{
   display: grid;
   grid-template-columns: 1fr 4fr;
 }
 
-#about h2{
-  align-self: flex-start;
-}
 
-#about p{
+#about p, #contact nav{
   border-left: 5px solid var(--mint);
   padding-left: 2%;
 }
 
+#work{
+  margin: 3% 0  ;
+}
+
+.portfolio{
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-gap: 1%;
+  border-left: 5px solid var(--mint);
+  padding-left: 2%;
+}
+
+.portfolio div{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;  
+  min-height: 480px;
+  background-blend-mode: color;
+  border-radius: 15px;
+}
+
+.portfolio div:hover{
+  background-blend-mode: color-dodge;
+}
+
+.portfolio div:hover a{
+  visibility: visible;
+  opacity: 1;
+}
+
+.portfolio div a{
+  background: rgb(0,0,0,0.7);
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  color: #FFF;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+  border-radius: 15px;
+}
+
+.portfolio div a h3{
+  color: var(--mint);
+  font-size: 1.5rem;
+  margin-bottom: 2%;
+}
+
+.portfolio div a span{
+  align-self: flex-end;
+}
+
+.bootcamp{
+  background-image: linear-gradient(black, black), url('../images/horiseon.jpeg');
+}
+
+.f1tv{
+  background-image: linear-gradient(black, black), url('../images/f1tv.jpeg');
+}
+
+.motorola{
+  background-image: linear-gradient(black, black), url('../images/motorola.jpeg');
+}
+
+.next{
+  background-image: linear-gradient(black, black), url('../images/next.jpeg');
+}
+
+#contact nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.gh{
+  background-image: url(../images/github.png);
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+.gh:hover{
+  border: 2px solid var(--mint);
+}
 
 
 /* footer styles */
 
 footer{
   grid-column: 1/3;
+  margin-top: 5%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
 }
 
 /* media queries */
@@ -155,6 +254,15 @@ footer{
 @media screen and (max-width:768px){
   .hero-banner figure img{
     max-height: 250px;
+  }
+
+  .portfolio div {
+    height: 250px;
+    min-height: auto;
+  }
+
+  #contact nav {
+    grid-column-gap: 2%;;
   }
 }
 
@@ -200,6 +308,26 @@ footer{
     border-top: 5px solid var(--mint);
     border-left: none;
     padding: 2% 0 0;
+  }
+
+  #work, #contact{
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio, #contact nav  {
+    grid-template-columns: 1fr;
+    border-top: 5px solid var(--mint);
+    border-left: none;
+    padding-top: 4%;
+    padding-left: 0%;
+  }
+
+  #contact{
+    margin-top: 5%;
+  }
+
+  #contact nav {
+    grid-template-columns: 1fr 1fr;
   }
 
   footer {
